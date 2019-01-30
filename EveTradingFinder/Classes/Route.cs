@@ -56,4 +56,14 @@ namespace EveTradingFinder
         }
 
     }
+
+    public static class Extension
+    {
+        public static string ToMoney(this decimal value)
+        {
+            return value.ToString("### ### ### ### ### ### ###.####");
+        }
+
+    }
+
 }

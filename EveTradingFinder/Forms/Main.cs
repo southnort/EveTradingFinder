@@ -13,6 +13,8 @@ namespace EveTradingFinder.Forms
 {
     public partial class Main : Form
     {
+        private List<Route> loadedRoutes;
+
         private string baseUrl
         {
             get { return "https://evemarketer.com/"; }
@@ -51,6 +53,27 @@ namespace EveTradingFinder.Forms
             return result;
         }
 
+        private List<string> GetRandomItemsId()
+        {
+            Random random = new Random();
+            List<string> originals = new List<string>();
+            List<string> result = new List<string>();
+            using (StreamReader sr = new StreamReader(@"Files\RandomItemsId.txt"))
+            {
+                while (!sr.EndOfStream)
+                    originals.Add(sr.ReadLine().Split('|')[0]);
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                int number = random.Next(0, originals.Count);
+                result.Add(originals[number]);
+            }
+
+            return result;
+        }
+
+
 
         private List<string> CreateUrlsForFiles()
         {
@@ -59,7 +82,7 @@ namespace EveTradingFinder.Forms
 
             var requests = new List<string>();
 
-            
+
 
             foreach (var item in itemsId)
             {
@@ -82,7 +105,29 @@ namespace EveTradingFinder.Forms
                     requests.Add(url);
                 }
 
-                
+
+            }
+
+
+            return requests;
+        }
+
+        private List<string> CreateRandomUrlsForFiles()
+        {
+            var itemsId = GetRandomItemsId();
+
+            var requests = new List<string>();
+
+
+
+            foreach (var item in itemsId)
+            {
+                string url = baseUrl;
+                url += "types/" + item;
+                requests.Add(url);
+
+
+
             }
 
 
@@ -100,8 +145,35 @@ namespace EveTradingFinder.Forms
             }
         }
 
+        private void LoadRandomHtmlFromSite()
+        {
+            var list = CreateRandomUrlsForFiles();
+            foreach (var url in list)
+            {
+                // MessageBox.Show(url);
+                BrowserForm form = new BrowserForm(url);
+                form.Show();
+            }
+        }
+
+
         private void LoadRoutes(List<Route> routes)
         {
+            for (int i = 0; i < routes.Count; i++)
+            {
+                Route r = routes[i];
+
+                int newRowNum = dataGridView1.Rows.Add();
+                var row = dataGridView1.Rows[newRowNum];
+
+                row.Cells["id"].Value = i;
+                row.Cells["itemName"].Value = r.itemName;
+                row.Cells["totalProfitCol"].Value = r.GetTotalProfit().ToMoney();
+                row.Cells["profitPerIskCol"].Value = r.GetProfitPerIsk().ToMoney();
+                row.Cells["profitPerVolumeCol"].Value = r.GetProfitPerVolume().ToMoney();
+                row.Cells["profitPerUnitCol"].Value = r.GetProfitPerUnit().ToMoney();
+
+            }
 
         }
 
@@ -111,12 +183,12 @@ namespace EveTradingFinder.Forms
 
         private void itemsButton_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start(@"Files\ItemsId.txt");
         }
 
         private void regionsButton_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start(@"Files\RegionsId.txt");
         }
 
         private void loadDataButton_Click(object sender, EventArgs e)
@@ -126,8 +198,19 @@ namespace EveTradingFinder.Forms
             {
                 file.Delete();
             }
-            
+
             LoadHtmlFilesFromSite();
+        }
+
+        private void getRandomItesFilesButton_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo directory = new DirectoryInfo(@"MarketData\");
+            foreach (var file in directory.GetFiles())
+            {
+                file.Delete();
+            }
+
+            LoadRandomHtmlFromSite();
         }
 
         private void searchOrdersButton_Click(object sender, EventArgs e)
@@ -152,8 +235,23 @@ namespace EveTradingFinder.Forms
                 sortingType = SortingType.ByProfitPerVolume;
 
 
-            var routes = finder.GetRoutes(sortingType);
-            LoadRoutes(routes);
+            loadedRoutes = finder.GetRoutes(sortingType);
+            LoadRoutes(loadedRoutes);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int num = (int)dataGridView1.CurrentRow.Cells["id"].Value;
+                Route route = loadedRoutes[num];
+
+                RouteForm form = new RouteForm(route);
+                form.Show();
+            }
+
+        }
+
+
     }
 }

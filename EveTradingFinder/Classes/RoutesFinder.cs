@@ -87,10 +87,11 @@ namespace EveTradingFinder
             var original = Program.dataBase.sellOrders.Where(o => o.itemName == itemName)
                 .OrderBy(o => o.price).ToList();
 
-            int count = original.Count > 10 ? 10 : original.Count;
+            int count = original.Count > 10 ? 10 : original.Count-1;
             while (count > 0)
             {
                 orders.Add(original[count]);
+                count--;
             }
 
             return orders;
@@ -106,6 +107,7 @@ namespace EveTradingFinder
             while (count > 0)
             {
                 orders.Add(original[count]);
+                count--;
             }
 
             return orders;

@@ -6,7 +6,6 @@ C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug
 C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.csproj.CoreCompileInputs.cache
 C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.exe
 C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.pdb
-C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Form1.resources
 C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.BrowserForm.resources
 C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.Main.resources
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\bin\Debug\EveTradingFinder.exe
@@ -23,3 +22,8 @@ C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\Eve
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.csproj.CopyComplete
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.exe
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.pdb
+C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.RouteForm.resources
+C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.csproj.CopyComplete

@@ -47,10 +47,19 @@
             this.priceTo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.countBuy = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.regionTo = new System.Windows.Forms.TextBox();
+            this.securityStatusTo = new System.Windows.Forms.Label();
+            this.regionTo = new System.Windows.Forms.Label();
+            this.stationTo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.totalProfit = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.profitPerIsk = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.profitPerVolume = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.profitPerUnit = new System.Windows.Forms.TextBox();
+            this.closeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // itemName
@@ -235,34 +244,34 @@
             this.countBuy.TabIndex = 18;
             this.countBuy.Text = "countBuy";
             // 
-            // label9
+            // securityStatusTo
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(691, 173);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(114, 17);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "securityStatusTo";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(437, 124);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 17);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "regionTo";
+            this.securityStatusTo.AutoSize = true;
+            this.securityStatusTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.securityStatusTo.Location = new System.Drawing.Point(691, 173);
+            this.securityStatusTo.Name = "securityStatusTo";
+            this.securityStatusTo.Size = new System.Drawing.Size(114, 17);
+            this.securityStatusTo.TabIndex = 17;
+            this.securityStatusTo.Text = "securityStatusTo";
             // 
             // regionTo
             // 
-            this.regionTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.regionTo.Location = new System.Drawing.Point(437, 144);
+            this.regionTo.AutoSize = true;
+            this.regionTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regionTo.Location = new System.Drawing.Point(437, 124);
             this.regionTo.Name = "regionTo";
-            this.regionTo.Size = new System.Drawing.Size(303, 26);
-            this.regionTo.TabIndex = 15;
+            this.regionTo.Size = new System.Drawing.Size(65, 17);
+            this.regionTo.TabIndex = 16;
             this.regionTo.Text = "regionTo";
+            // 
+            // stationTo
+            // 
+            this.stationTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.stationTo.Location = new System.Drawing.Point(437, 144);
+            this.stationTo.Name = "stationTo";
+            this.stationTo.Size = new System.Drawing.Size(303, 26);
+            this.stationTo.TabIndex = 15;
+            this.stationTo.Text = "regionTo";
             // 
             // label11
             // 
@@ -274,20 +283,115 @@
             this.label11.TabIndex = 14;
             this.label11.Text = "Buy";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(126, 369);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 17);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "totalProfit";
+            // 
+            // totalProfit
+            // 
+            this.totalProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalProfit.Location = new System.Drawing.Point(126, 389);
+            this.totalProfit.Name = "totalProfit";
+            this.totalProfit.Size = new System.Drawing.Size(189, 26);
+            this.totalProfit.TabIndex = 24;
+            this.totalProfit.Text = "totalProfit";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(321, 369);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 17);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "profitPerIsk";
+            // 
+            // profitPerIsk
+            // 
+            this.profitPerIsk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.profitPerIsk.Location = new System.Drawing.Point(321, 389);
+            this.profitPerIsk.Name = "profitPerIsk";
+            this.profitPerIsk.Size = new System.Drawing.Size(189, 26);
+            this.profitPerIsk.TabIndex = 26;
+            this.profitPerIsk.Text = "profitPerIsk";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(321, 421);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(109, 17);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "profitPerVolume";
+            // 
+            // profitPerVolume
+            // 
+            this.profitPerVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.profitPerVolume.Location = new System.Drawing.Point(321, 441);
+            this.profitPerVolume.Name = "profitPerVolume";
+            this.profitPerVolume.Size = new System.Drawing.Size(189, 26);
+            this.profitPerVolume.TabIndex = 30;
+            this.profitPerVolume.Text = "profitPerVolume";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(126, 421);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(87, 17);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "profitPerUnit";
+            // 
+            // profitPerUnit
+            // 
+            this.profitPerUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.profitPerUnit.Location = new System.Drawing.Point(126, 441);
+            this.profitPerUnit.Name = "profitPerUnit";
+            this.profitPerUnit.Size = new System.Drawing.Size(189, 26);
+            this.profitPerUnit.TabIndex = 28;
+            this.profitPerUnit.Text = "profitPerUnit";
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.Location = new System.Drawing.Point(627, 425);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(111, 55);
+            this.closeButton.TabIndex = 32;
+            this.closeButton.Text = "Закрыть";
+            this.closeButton.UseVisualStyleBackColor = true;
+            // 
             // RouteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 508);
+            this.ClientSize = new System.Drawing.Size(750, 492);
+            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.profitPerVolume);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.profitPerUnit);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.profitPerIsk);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.totalProfit);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.summBuy);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.priceTo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.countBuy);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.securityStatusTo);
             this.Controls.Add(this.regionTo);
+            this.Controls.Add(this.stationTo);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.summSell);
@@ -305,6 +409,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RouteForm";
             this.Text = "RouteForm";
+            this.Load += new System.EventHandler(this.RouteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,9 +436,18 @@
         private System.Windows.Forms.TextBox priceTo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox countBuy;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox regionTo;
+        private System.Windows.Forms.Label securityStatusTo;
+        private System.Windows.Forms.Label regionTo;
+        private System.Windows.Forms.TextBox stationTo;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox totalProfit;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox profitPerIsk;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox profitPerVolume;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox profitPerUnit;
+        private System.Windows.Forms.Button closeButton;
     }
 }

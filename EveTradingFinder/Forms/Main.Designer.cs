@@ -40,6 +40,13 @@
             this.allRegionsCheckBox = new System.Windows.Forms.CheckBox();
             this.loadDataButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalProfitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profitPerIskCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profitPerVolumeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profitPerUnitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.getRandomItesFilesButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +56,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Moccasin;
+            this.panel1.Controls.Add(this.getRandomItesFilesButton);
             this.panel1.Controls.Add(this.refreshButton);
             this.panel1.Controls.Add(this.profitPerVolume);
             this.panel1.Controls.Add(this.profitPerUnit);
@@ -61,7 +69,7 @@
             this.panel1.Controls.Add(this.loadDataButton);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(590, 100);
+            this.panel1.Size = new System.Drawing.Size(710, 100);
             this.panel1.TabIndex = 0;
             // 
             // refreshButton
@@ -119,18 +127,18 @@
             // searchOrdersButton
             // 
             this.searchOrdersButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchOrdersButton.Location = new System.Drawing.Point(379, 50);
+            this.searchOrdersButton.Location = new System.Drawing.Point(499, 50);
             this.searchOrdersButton.Name = "searchOrdersButton";
             this.searchOrdersButton.Size = new System.Drawing.Size(122, 41);
             this.searchOrdersButton.TabIndex = 4;
-            this.searchOrdersButton.Text = "Поиск ордеров";
+            this.searchOrdersButton.Text = "Прочитать файлы";
             this.searchOrdersButton.UseVisualStyleBackColor = true;
             this.searchOrdersButton.Click += new System.EventHandler(this.searchOrdersButton_Click);
             // 
             // regionsButton
             // 
             this.regionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.regionsButton.Location = new System.Drawing.Point(507, 50);
+            this.regionsButton.Location = new System.Drawing.Point(627, 50);
             this.regionsButton.Name = "regionsButton";
             this.regionsButton.Size = new System.Drawing.Size(80, 41);
             this.regionsButton.TabIndex = 3;
@@ -141,7 +149,7 @@
             // itemsButton
             // 
             this.itemsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.itemsButton.Location = new System.Drawing.Point(507, 3);
+            this.itemsButton.Location = new System.Drawing.Point(627, 3);
             this.itemsButton.Name = "itemsButton";
             this.itemsButton.Size = new System.Drawing.Size(80, 41);
             this.itemsButton.TabIndex = 2;
@@ -153,7 +161,7 @@
             // 
             this.allRegionsCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.allRegionsCheckBox.AutoSize = true;
-            this.allRegionsCheckBox.Location = new System.Drawing.Point(252, 4);
+            this.allRegionsCheckBox.Location = new System.Drawing.Point(372, 4);
             this.allRegionsCheckBox.Name = "allRegionsCheckBox";
             this.allRegionsCheckBox.Size = new System.Drawing.Size(121, 17);
             this.allRegionsCheckBox.TabIndex = 1;
@@ -163,30 +171,89 @@
             // loadDataButton
             // 
             this.loadDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadDataButton.Location = new System.Drawing.Point(379, 3);
+            this.loadDataButton.Location = new System.Drawing.Point(499, 3);
             this.loadDataButton.Name = "loadDataButton";
             this.loadDataButton.Size = new System.Drawing.Size(122, 41);
             this.loadDataButton.TabIndex = 0;
-            this.loadDataButton.Text = "Загрузить данные";
+            this.loadDataButton.Text = "Загрузить файлы";
             this.loadDataButton.UseVisualStyleBackColor = true;
             this.loadDataButton.Click += new System.EventHandler(this.loadDataButton_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.itemName,
+            this.totalProfitCol,
+            this.profitPerIskCol,
+            this.profitPerVolumeCol,
+            this.profitPerUnitCol});
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(12, 118);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(590, 375);
+            this.dataGridView1.Size = new System.Drawing.Size(710, 375);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // itemName
+            // 
+            this.itemName.HeaderText = "itemName";
+            this.itemName.Name = "itemName";
+            this.itemName.Width = 150;
+            // 
+            // totalProfitCol
+            // 
+            this.totalProfitCol.HeaderText = "totalProfitCol";
+            this.totalProfitCol.Name = "totalProfitCol";
+            this.totalProfitCol.Width = 120;
+            // 
+            // profitPerIskCol
+            // 
+            this.profitPerIskCol.HeaderText = "profitPerIskCol";
+            this.profitPerIskCol.Name = "profitPerIskCol";
+            this.profitPerIskCol.Width = 120;
+            // 
+            // profitPerVolumeCol
+            // 
+            this.profitPerVolumeCol.HeaderText = "profitPerVolumeCol";
+            this.profitPerVolumeCol.Name = "profitPerVolumeCol";
+            this.profitPerVolumeCol.Width = 120;
+            // 
+            // profitPerUnitCol
+            // 
+            this.profitPerUnitCol.HeaderText = "profitPerUnitCol";
+            this.profitPerUnitCol.Name = "profitPerUnitCol";
+            this.profitPerUnitCol.Width = 120;
+            // 
+            // getRandomItesFilesButton
+            // 
+            this.getRandomItesFilesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.getRandomItesFilesButton.Location = new System.Drawing.Point(371, 38);
+            this.getRandomItesFilesButton.Name = "getRandomItesFilesButton";
+            this.getRandomItesFilesButton.Size = new System.Drawing.Size(122, 53);
+            this.getRandomItesFilesButton.TabIndex = 10;
+            this.getRandomItesFilesButton.Text = "Загрузить случайные предметы";
+            this.getRandomItesFilesButton.UseVisualStyleBackColor = true;
+            this.getRandomItesFilesButton.Click += new System.EventHandler(this.getRandomItesFilesButton_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 505);
+            this.ClientSize = new System.Drawing.Size(734, 505);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "Main";
@@ -212,5 +279,12 @@
         private System.Windows.Forms.RadioButton profitPerIsk;
         private System.Windows.Forms.RadioButton byTotalProfit;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalProfitCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn profitPerIskCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn profitPerVolumeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn profitPerUnitCol;
+        private System.Windows.Forms.Button getRandomItesFilesButton;
     }
 }
