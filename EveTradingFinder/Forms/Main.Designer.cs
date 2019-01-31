@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.getRandomItesFilesButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.profitPerVolume = new System.Windows.Forms.RadioButton();
             this.profitPerUnit = new System.Windows.Forms.RadioButton();
@@ -42,11 +43,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalProfitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.profitPerIskCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profitPerVolumeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profitPerUnitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.getRandomItesFilesButton = new System.Windows.Forms.Button();
+            this.sellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +70,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(710, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // getRandomItesFilesButton
+            // 
+            this.getRandomItesFilesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.getRandomItesFilesButton.Location = new System.Drawing.Point(371, 38);
+            this.getRandomItesFilesButton.Name = "getRandomItesFilesButton";
+            this.getRandomItesFilesButton.Size = new System.Drawing.Size(122, 53);
+            this.getRandomItesFilesButton.TabIndex = 10;
+            this.getRandomItesFilesButton.Text = "Загрузить случайные предметы";
+            this.getRandomItesFilesButton.UseVisualStyleBackColor = true;
+            this.getRandomItesFilesButton.Click += new System.EventHandler(this.getRandomItesFilesButton_Click);
             // 
             // refreshButton
             // 
@@ -191,10 +201,9 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.itemName,
-            this.totalProfitCol,
             this.profitPerIskCol,
-            this.profitPerVolumeCol,
-            this.profitPerUnitCol});
+            this.sellPrice,
+            this.buyPrice});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(12, 118);
             this.dataGridView1.Name = "dataGridView1";
@@ -214,40 +223,23 @@
             this.itemName.Name = "itemName";
             this.itemName.Width = 150;
             // 
-            // totalProfitCol
-            // 
-            this.totalProfitCol.HeaderText = "totalProfitCol";
-            this.totalProfitCol.Name = "totalProfitCol";
-            this.totalProfitCol.Width = 120;
-            // 
             // profitPerIskCol
             // 
             this.profitPerIskCol.HeaderText = "profitPerIskCol";
             this.profitPerIskCol.Name = "profitPerIskCol";
             this.profitPerIskCol.Width = 120;
             // 
-            // profitPerVolumeCol
+            // sellPrice
             // 
-            this.profitPerVolumeCol.HeaderText = "profitPerVolumeCol";
-            this.profitPerVolumeCol.Name = "profitPerVolumeCol";
-            this.profitPerVolumeCol.Width = 120;
+            this.sellPrice.HeaderText = "sellPrice";
+            this.sellPrice.Name = "sellPrice";
+            this.sellPrice.Width = 150;
             // 
-            // profitPerUnitCol
+            // buyPrice
             // 
-            this.profitPerUnitCol.HeaderText = "profitPerUnitCol";
-            this.profitPerUnitCol.Name = "profitPerUnitCol";
-            this.profitPerUnitCol.Width = 120;
-            // 
-            // getRandomItesFilesButton
-            // 
-            this.getRandomItesFilesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.getRandomItesFilesButton.Location = new System.Drawing.Point(371, 38);
-            this.getRandomItesFilesButton.Name = "getRandomItesFilesButton";
-            this.getRandomItesFilesButton.Size = new System.Drawing.Size(122, 53);
-            this.getRandomItesFilesButton.TabIndex = 10;
-            this.getRandomItesFilesButton.Text = "Загрузить случайные предметы";
-            this.getRandomItesFilesButton.UseVisualStyleBackColor = true;
-            this.getRandomItesFilesButton.Click += new System.EventHandler(this.getRandomItesFilesButton_Click);
+            this.buyPrice.HeaderText = "buyPrice";
+            this.buyPrice.Name = "buyPrice";
+            this.buyPrice.Width = 150;
             // 
             // Main
             // 
@@ -279,12 +271,11 @@
         private System.Windows.Forms.RadioButton profitPerIsk;
         private System.Windows.Forms.RadioButton byTotalProfit;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button getRandomItesFilesButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalProfitCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn profitPerIskCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn profitPerVolumeCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn profitPerUnitCol;
-        private System.Windows.Forms.Button getRandomItesFilesButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sellPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn buyPrice;
     }
 }

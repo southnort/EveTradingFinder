@@ -168,10 +168,13 @@ namespace EveTradingFinder.Forms
 
                 row.Cells["id"].Value = i;
                 row.Cells["itemName"].Value = r.itemName;
-                row.Cells["totalProfitCol"].Value = r.GetTotalProfit().ToMoney();
+                // row.Cells["totalProfitCol"].Value = r.GetTotalProfit().ToMoney();
                 row.Cells["profitPerIskCol"].Value = r.GetProfitPerIsk().ToMoney();
-                row.Cells["profitPerVolumeCol"].Value = r.GetProfitPerVolume().ToMoney();
-                row.Cells["profitPerUnitCol"].Value = r.GetProfitPerUnit().ToMoney();
+                // row.Cells["profitPerVolumeCol"].Value = r.GetProfitPerVolume().ToMoney();
+                // row.Cells["profitPerUnitCol"].Value = r.GetProfitPerUnit().ToMoney();
+                row.Cells["sellPrice"].Value = r.priceFrom.ToMoney();
+                row.Cells["buyPrice"].Value = r.priceTo.ToMoney();
+
 
             }
 

@@ -29,3 +29,4 @@ C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\bin\Debug
 C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.csproj.CopyComplete
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.RouteForm.resources
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.SimpleMainForm.resources
+C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.SimpleMainForm.resources

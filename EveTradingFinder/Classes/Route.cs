@@ -7,20 +7,20 @@ namespace EveTradingFinder
 {
     public class Route
     {
-        public string itemName;
-        public decimal itemVolume { get { return Program.dataBase.items[itemName]; } }
-        public string regionFrom;
-        public string regionTo;
-        public string stationFrom;
-        public string securityStatusFrom;
-        public string stationTo;
-        public string securityStatusTo;
+        public string itemName = "";
+        public decimal itemVolume = 1; //{ get { return Program.dataBase.items[itemName]; } }
+        public string regionFrom = "";
+        public string regionTo = "";
+        public string stationFrom = "";
+        public string securityStatusFrom = "";
+        public string stationTo = "";
+        public string securityStatusTo = "";
 
-        public int countSell;
-        public int countBuy;
+        public int countSell = 1;
+        public int countBuy = 1;
 
-        public decimal priceFrom;
-        public decimal priceTo;
+        public decimal priceFrom = 0;
+        public decimal priceTo = 0;
 
 
         public decimal GetTotalProfit(decimal cargoVolume = 0)
@@ -41,6 +41,8 @@ namespace EveTradingFinder
 
         public decimal GetProfitPerIsk()
         {
+            if (priceFrom < 1) return 0; 
+
             return priceTo / priceFrom;
         }
 

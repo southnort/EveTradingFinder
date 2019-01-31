@@ -10,22 +10,27 @@ using System.IO;
 using HtmlAgilityPack;
 using System.Globalization;
 using System.Threading;
+using System.Net;
 
 
 namespace EveTradingFinder.Forms
 {
     public partial class SimpleMainForm : Form
     {
+        private List<Route> routes;
+
         public SimpleMainForm()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         private void ReloadForm()
         {
+            
             dataGridView1.Rows.Clear();
-
-            LoadRoutes(GetRoutes(GetIdOfAllItems()));
+            routes = GetRoutes(GetRandomIdOfItems());
+            LoadRoutes(routes);
+            
         }
 
         private void LoadRoutes(List<Route> routes)
@@ -39,37 +44,44 @@ namespace EveTradingFinder.Forms
 
                 row.Cells["id"].Value = i;
                 row.Cells["itemName"].Value = r.itemName;
-                row.Cells["totalProfitCol"].Value = r.GetTotalProfit().ToMoney();
+                // row.Cells["totalProfitCol"].Value = r.GetTotalProfit().ToMoney();
                 row.Cells["profitPerIskCol"].Value = r.GetProfitPerIsk().ToMoney();
-                row.Cells["profitPerVolumeCol"].Value = r.GetProfitPerVolume().ToMoney();
-                row.Cells["profitPerUnitCol"].Value = r.GetProfitPerUnit().ToMoney();
+                // row.Cells["profitPerVolumeCol"].Value = r.GetProfitPerVolume().ToMoney();
+                // row.Cells["profitPerUnitCol"].Value = r.GetProfitPerUnit().ToMoney();
+                row.Cells["sellPrice"].Value = r.priceFrom.ToMoney();
+                row.Cells["buyPrice"].Value = r.priceTo.ToMoney();
+
 
             }
 
         }
 
+
         private List<Route> GetRoutes(List<string> itemsId)
         {
+            //разбиваем исходное количество ID на несколько мелких по 200 шт.
+            int maxCount = 198;
+            int listCount = itemsId.Count / maxCount;
+            var lists = new List<string>[listCount + 1];
+            for (int i = 0; i < lists.Length; i++)
+            {
+                lists[i] = new List<string>();
+                lists[i].AddRange(itemsId.Skip(maxCount * i).Take(maxCount).ToArray());
+            }
+
+
             List<Route> routes = new List<Route>();
 
-            List<string> tempIds = new List<string>();
-            int counter = 0;
-            foreach (var id in itemsId)
+
+            foreach (var miniList in lists)
             {
-                tempIds.Add(id);
-                counter++;
-                if (counter == 198)
-                {
-                    var tempRoutes = ParseHtmlDocument(
-                        LoadHtml(
-                           GetUrlQuery(tempIds)));
-                    routes.AddRange(tempRoutes);
-                    tempIds.Clear();
-
-                    counter = 0;
-                }
-
+                var url = GetUrlQuery(miniList.ToList());
+                var document = LoadHtml(url);
+              //  document.Save(Guid.NewGuid() + ".html");
+                var rts = ParseHtmlDocument(document);
+                routes.AddRange(rts);
             }
+
 
             return routes;
 
@@ -83,21 +95,25 @@ namespace EveTradingFinder.Forms
             foreach (var node in doc.DocumentNode.SelectNodes("//type"))
             {
                 var route = new Route();
-                route.itemName = node.SelectSingleNode("//type").InnerText;
+                route.itemName = node.GetAttributeValue("id", "type");
 
-                var buyNode = node.SelectSingleNode("//buy");
-                route.priceTo =
-                    decimal.Parse(
-                    buyNode.SelectSingleNode("//max").InnerText,
-                    CultureInfo.InvariantCulture);
 
-                var sellNode = node.SelectSingleNode("//sell");
+                var sellNode = node.ChildNodes["sell"];
+                var text = sellNode.ChildNodes["min"].InnerText;//  .SelectSingleNode("//min").InnerText;
                 route.priceFrom =
-                    decimal.Parse(
-                    buyNode.SelectSingleNode("//min").InnerText,
-                    CultureInfo.InvariantCulture);
+                    decimal.Parse(text, CultureInfo.InvariantCulture);
 
-                if (route.GetProfitPerIsk() > 1)
+                var buyNode = node.ChildNodes["buy"];
+                text = buyNode.ChildNodes["max"].InnerText;// .SelectSingleNode("//max").InnerText;
+                route.priceTo =
+                    decimal.Parse(text, CultureInfo.InvariantCulture);
+
+
+                if (
+                    (route.GetProfitPerIsk() > 1) &&
+                    (route.GetProfitPerUnit() > 30000)
+
+                    )
                     routes.Add(route);
             }
 
@@ -110,27 +126,24 @@ namespace EveTradingFinder.Forms
 
         private HtmlAgilityPack.HtmlDocument LoadHtml(string url)
         {
-            HtmlWeb web = new HtmlWeb();
-            var htmlDoc = web.Load(url);
-            Thread.Sleep(500);
+            WebRequest req = WebRequest.Create(url);
+            WebResponse res = req.GetResponse();
 
-            Console.WriteLine("###\n###");
-            Console.WriteLine(htmlDoc.Text);
-            Console.WriteLine("###\n###");
-            
+            Stream stream = res.GetResponseStream();
+            StreamReader sr = new StreamReader(stream);
+            string result = sr.ReadToEnd();
+            sr.Close();            
 
-            Thread.Sleep(500);
-
-            Console.WriteLine("###\n###");
-            Console.WriteLine(htmlDoc.Text);
-            Console.WriteLine("###\n###");
-            Console.Read();
+            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+            htmlDoc.LoadHtml(result);
 
             return htmlDoc;
         }
 
         private string GetUrlQuery(List<string> ids)
         {
+            if (ids.Count > 198) throw new Exception("Можно передавать До 200 ID");
+
 
             StringBuilder sb = new StringBuilder();
             sb.Append( @"https://api.evemarketer.com/ec/marketstat?typeid=");
@@ -140,10 +153,7 @@ namespace EveTradingFinder.Forms
                 sb.Append(",");
             }
             sb.Length--;
-
-            Console.WriteLine("\n\n+++++++++++++++++++++++\n\n");
-            Console.WriteLine(sb.ToString());
-
+            
             return sb.ToString();
         }
 
@@ -158,7 +168,23 @@ namespace EveTradingFinder.Forms
 
             return result;
         }
-        
+
+        private List<string> GetRandomIdOfItems()
+        {
+            Random random = new Random();
+            List<string> result = new List<string>();
+
+            var allIds = GetIdOfAllItems();
+            for (int i = 0; i < 600; i++)
+            {
+                int num = random.Next(0, allIds.Count);
+                result.Add(allIds[num]);
+            }
+
+           
+            return result;
+
+        }
 
 
 
@@ -166,6 +192,19 @@ namespace EveTradingFinder.Forms
         private void refreshButton_Click(object sender, EventArgs e)
         {
             ReloadForm();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int num = (int)dataGridView1.CurrentRow.Cells["id"].Value;
+                Route route = routes[num];
+
+                RouteForm form = new RouteForm(route);
+                form.Show();
+            }
+
         }
     }
 }
