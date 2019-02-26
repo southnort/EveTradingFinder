@@ -50,47 +50,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\DataBase.cs" />
-    <Compile Include="Classes\HtmlFileReader.cs" />
-    <Compile Include="Classes\Order.cs" />
-    <Compile Include="Classes\Route.cs" />
-    <Compile Include="Classes\RoutesFinder.cs" />
-    <Compile Include="Forms\BrowserForm.cs">
+    <Compile Include="Classes\Blueprint.cs" />
+    <Compile Include="Classes\Item.cs" />
+    <Compile Include="_Old\Classes\DataBase.cs" />
+    <Compile Include="_Old\Classes\HtmlFileReader.cs" />
+    <Compile Include="_Old\Classes\Order.cs" />
+    <Compile Include="_Old\Classes\Route.cs" />
+    <Compile Include="_Old\Classes\RoutesFinder.cs" />
+    <Compile Include="_Old\Forms\BrowserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BrowserForm.Designer.cs">
+    <Compile Include="_Old\Forms\BrowserForm.Designer.cs">
       <DependentUpon>BrowserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="_Old\Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
+    <Compile Include="_Old\Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RouteForm.cs">
+    <Compile Include="_Old\Forms\PurchasesListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RouteForm.Designer.cs">
+    <Compile Include="_Old\Forms\PurchasesListForm.Designer.cs">
+      <DependentUpon>PurchasesListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Old\Forms\RouteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Old\Forms\RouteForm.Designer.cs">
       <DependentUpon>RouteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SimpleMainForm.cs">
+    <Compile Include="_Old\Forms\SimpleMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SimpleMainForm.Designer.cs">
+    <Compile Include="_Old\Forms\SimpleMainForm.Designer.cs">
       <DependentUpon>SimpleMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\BrowserForm.resx">
+    <EmbeddedResource Include="_Old\Forms\BrowserForm.resx">
       <DependentUpon>BrowserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
+    <EmbeddedResource Include="_Old\Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RouteForm.resx">
+    <EmbeddedResource Include="_Old\Forms\PurchasesListForm.resx">
+      <DependentUpon>PurchasesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Old\Forms\RouteForm.resx">
       <DependentUpon>RouteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SimpleMainForm.resx">
+    <EmbeddedResource Include="_Old\Forms\SimpleMainForm.resx">
       <DependentUpon>SimpleMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,7 +125,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MarketData\" />
+    <Folder Include="_Old\MarketData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

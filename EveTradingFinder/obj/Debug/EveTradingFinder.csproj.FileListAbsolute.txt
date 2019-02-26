@@ -30,3 +30,4 @@ C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.RouteForm.resources
 C:\Users\User\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.SimpleMainForm.resources
 C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.SimpleMainForm.resources
+C:\Users\Ярик\Documents\Projects\EveTradingFinder\EveTradingFinder\obj\Debug\EveTradingFinder.Forms.PurchasesListForm.resources
